@@ -1,0 +1,7 @@
+<owl-carousel-o [options]="customOptions" class="my-3 d-block d-lg-none">
+    <ng-template carouselSlide *ngFor="let trade of trades.categories">
+        <a (click)="onSearch()" [routerLink]="['/trades', trade.metier]" class="btn btn-outline-dark">
+            {{ trade.metier }}
+        </a>
+    </ng-template>
+</owl-carousel-o>

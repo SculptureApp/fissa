@@ -1,0 +1,48 @@
+{
+	"categories":[{
+		"id": 1,
+		"metier": "maçon",
+		"img": "1.png"
+		},
+		{
+		"id": 2,
+		"metier": "couvreur",
+		"img": "2.png"
+		},
+		{
+		"id": 3,
+		"metier": "peintre",
+		"img": "3.png"
+		},
+		{
+		"id": 4,
+		"metier": "electricien",
+		"img": "4.png"
+		},
+		{
+		"id": 5,
+		"metier": "plombier",
+		"img": "5.png"
+		},
+		{
+		"id": 6,
+		"metier": "chauffagiste",
+		"img": "6.png"
+		},
+		{
+		"id": 7,
+		"metier": "menuisier",
+		"img": "7.png"
+		},
+		{
+		"id": 8,
+		"metier": "canalisateur",
+		"img": "8.png"
+		},
+		{
+		"id": 9,
+		"metier": "agent d'entretient",
+		"img": "9.png"
+		}
+	]
+}

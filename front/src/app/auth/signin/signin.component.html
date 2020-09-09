@@ -1,0 +1,56 @@
+<div class="cart-table-area">
+    <div class="container-fluid">
+        
+        <div class="row align-items-center justify-content-center mt-100">
+            <div class="col-12 col-lg-6">
+                <div class="checkout_details_area clearfix d-none d-lg-block">
+                    <img src="assets/img/bg-img/bg.jpg" class="img-fluid" alt="dents Login">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+
+                <div class="checkout_details_area px-4 py-4 border clearfix">
+
+                    <div class="cart-title">
+                        <h2>Vous avez déjà utilisé</h2>
+                    </div>
+
+                    <form [formGroup]="signinForm" (ngSubmit)="onSignIn()">
+                        <div class="row">
+                            <div *ngIf="signinErr" class="alert alert-danger">
+                                Votre email ou mot de passe est incorrecte
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="email" name="email" formControlName="email" class="form-control" placeholder="Email" >
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="password" name="password" formControlName="password" class="form-control" placeholder="Mot de passe" >
+                            </div>
+                            <div class="col-12 text-right">
+                                <a routerLink="/auth/change-password" class="text-muted change-orange">
+                                    Mot de passe oublié ?
+                                </a>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <button type="submit" class="amado-btn w-100">
+                                    Se connecter
+                                </button>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <p class="text-center text-muted small">
+                                    Vous n'avez pas de compte?
+
+                                    <a routerLink="/auth/signup" class="text-uppercase orange">
+                                        Inscription
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

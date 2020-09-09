@@ -1,0 +1,117 @@
+<!-- carousel -->
+<app-slider-trade (tradeEvent)="receiveTrade($event)"></app-slider-trade>
+<!-- carousel -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+            <!-- Total Products -->
+            <div class="total-products">
+                <p>
+                    25 Résultats
+                    <small class="orange">
+                        - Bizerte / Mateur / touts
+                    </small>
+                </p>
+                
+            </div>
+            <!-- Sorting -->
+            <div class="product-sorting d-flex">
+                
+                <div class="view-product d-flex align-items-center">
+                    <p>Vue</p>
+                    <form action="#" method="get">
+                        <select name="select" id="viewProduct">
+                            <option value="value">12</option>
+                            <option value="value">24</option>
+                            <option value="value">48</option>
+                            <option value="value">96</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div *ngFor="let pro of proUser | profilter:tradeName" class="card mt-3 mx-3 px-3 border-1 col-md-12">
+        <div class="card-body ">
+            <div class="row">
+                <div class="col-12 ">
+                    <a href="#">
+                        <h4 class="card-title change-orange">
+                            <img src="assets/img/core-img/house.png" class=" rounded-circle" width="35" height="35">
+                            {{ pro.lastName }} {{ pro.firstName }}
+                        </h4>
+                    </a>
+                </div>
+                <div class="col">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <p class="card-text text-muted small"> 
+                            <span class="vl mr-2 ml-0"></span> 
+                            <span class="font-weight-bold">Métier </span> 
+                            {{ pro.metier }}
+                            <br>
+                            <span class="vl mr-2 ml-0"></span> 
+                            <span class="font-weight-bold">
+                                <i class="fa fa-map-marker"></i> Adresse </span> 
+                            {{ pro.state }} {{ pro.deleg }}
+                        </p>
+                    </h6>
+
+                    <p *ngIf="pro.description" class="pt-3 border-top text-muted">
+                        {{ pro.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-white px-0 ">
+            <div class="row">
+                <div class=" col-md">
+                    <div class="ratings">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md text-muted">
+                    <span class="font-weight-bold">
+                        <i class="fa fa-phone-square" aria-hidden="true"></i> : 
+                    </span>
+                    <span>{{ pro.tel }}</span>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline float-right social-info">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item"> 
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                       </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <!-- Pagination -->
+        <nav aria-label="navigation">
+            <ul class="pagination justify-content-end mt-50">
+                <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                <li class="page-item"><a class="page-link" href="#">04.</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

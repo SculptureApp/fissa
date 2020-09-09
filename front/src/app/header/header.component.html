@@ -1,0 +1,162 @@
+<!-- Search Wrapper Area Start -->
+<div class="search-wrapper py-5">
+    <div class="search-close">
+        <i class="fa fa-close" aria-hidden="true"></i>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-content checkout_details_area">
+                    <form #form="ngForm">
+                        <div class="form-row">
+                            <div class="col-md">
+                                <select class="nice-select w-100" [(ngModel)]="selectedVille" name="selectedVille" (change)="OnChangeVille($event.target.value)">
+                                    <option value="0" [selected] ="true">
+                                        Votre Ville
+                                    </option>
+                                    <option *ngFor="let ville of data | keyvalue">
+                                       {{ ville.key }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md">
+                                <select class="nice-select w-100">
+                                    <option value="0">Votre Délégation</option>
+                                    <option *ngFor="let deleg of selectedState">
+                                        {{ deleg }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md">
+                            <input class="form-control" type="search" name="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="assets/img/core-img/search.png" alt=""></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search Wrapper Area End -->
+
+<!-- ##### Main Content Wrapper Start ##### -->
+<div class="main-content-wrapper d-flex clearfix">
+
+    <!-- Mobile Nav (max width 767px)-->
+    <div class="mobile-nav">
+        <!-- Navbar Brand -->
+        <div class="amado-navbar-brand mr-auto">
+            <a routerLink="/"><img src="assets/img/core-img/logo.png" alt=""></a>
+        </div>
+        <!-- Navbar Toggler -->
+        <div class="pr-4">
+            <a class="search-nav" style="cursor:poiter">
+                <img src="assets/img/core-img/search.png" alt="">
+            </a>
+        </div>
+        <div class="amado-navbar-toggler">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Header Area Start -->
+    <header class="header-area clearfix">
+        <!-- Close Icon -->
+        <div class="nav-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo -->
+        <div class="logo">
+            <a routerLink="/"><img src="assets/img/core-img/logo.png" alt=""></a>
+        </div>
+        <!-- Amado Nav -->
+        <nav class="amado-nav">
+            <ul>
+                <li class="navs">
+                    <a routerLink="/" routerLinkActive="active">Accueil</a>
+                </li>
+                <li class="navs">
+                    <a [routerLink]="['/trades/', 'all']">Métier</a>
+                </li>
+    
+                <div *ngIf="!authService.loggedIn(); else loggedIn">
+                    <li class="navs">
+                        <a routerLink="/auth/signin">
+                            Se connecter
+                        </a>
+                    </li>
+                </div>
+
+                <ng-template #loggedIn>
+                    <li class="nav-item dropdown has-arrow logged-item dropup">
+                        <a href="#" class="dropdown-toggle nav-link pl-0" data-toggle="dropdown" aria-expanded="false">
+                            <span class="user-img">
+                                <img class="rounded-circle" src="assets/img/product-img/patient.jpg" width="31" alt="Ryan Taylor">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="user-header">
+                                <div class="avatar avatar-sm">
+                                    <img src="assets/img/product-img/patient.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                </div>
+                                <div class="user-text">
+                                    <h6>Richard Wilson</h6>
+                                    <p class="text-muted mb-0">Patient</p>
+                                </div>
+                            </div>
+                            <a class="dropdown-item" routerLink="/auth/profile">Profile</a>
+                            <a class="dropdown-item" routerLink="/auth/change-password">
+                                Changer mot de passe
+                            </a>
+                            <a class="dropdown-item" (click)="authService.logout()">Déconnecter</a>
+                        </div>
+                    </li>
+                </ng-template>
+            </ul>
+        </nav>
+        <!-- Cart Menu -->
+        <div class="cart-fav-search mb-100">
+            <a href="#" class="fav-nav"><img src="assets/img/core-img/favorites.png" alt=""> Favori</a>
+            <a class="search-nav d-sm-none d-md-block" style="cursor:poiter">
+                <img src="assets/img/core-img/search.png" alt=""> Recherche
+            </a>
+        </div>
+        <!-- Social Button -->
+        <div class="social-info d-flex justify-content-between">
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <div *ngIf="activeDOM" class="shop_sidebar_area d-none d-lg-block">
+        <!-- ##### Single Widget ##### -->
+        <div class="widget catagory mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Catagories</h6>
+
+            <!--  Catagories  -->
+            <div class="catagories-menu">
+                <!-- Vertical trade navs -->
+                <app-vertical-trade></app-vertical-trade>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Catagories Area Start -->
+    <div [ngClass]="{ 'products-catagories-area clearfix': !activeDOM,
+                    'amado_product_area': activeDOM }">
+        <div [ngClass]="{'amado-pro-catagory clearfix': !activeDOM, 'container-fluid': activeDOM }">
+            
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+    <!-- Product Catagories Area End -->
+    
+</div>
+<!-- ##### Main Content Wrapper End ##### -->

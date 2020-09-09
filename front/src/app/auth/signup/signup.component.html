@@ -1,0 +1,311 @@
+<div class="cart-table-area">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center mt-50">
+            <div class="col-12 col-lg-6">
+                <div class="checkout_details_area clearfix d-none d-lg-block">
+
+                    <img src="assets/img/bg-img/bg.jpg" class="img-fluid" alt="dents Login">
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Inscription gratuite</h2>
+                <div class="checkout_details_area px-4 py-4 border clearfix">
+
+                    <ul class="nav nav-pills pb-4" id="pills-tab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="client-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="true">Client</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pro-tab" data-toggle="tab" href="#pro" role="tab" aria-controls="pro" aria-selected="false">Professionnel</a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="client-tab">
+                        <!-- form client -->
+                        <form [formGroup]="signupForm" 
+                              (ngSubmit)="onSignUp()"
+                              class="needs-validation" novalidate>
+
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender" checked>
+                                        <label class="custom-control-label" for="male"> Homme
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input id="female" type="radio" class="custom-control-input" value="Famme" name="gender" formControlName="gender">
+                                        <label class="custom-control-label" for="female">Femme</label>
+                                    </div>
+                                    <div *ngIf="f.gender.invalid && (f.gender.dirty || f.gender.touched)" >
+                                        <div >
+                                            <span *ngIf="f.gender.hasError('required')" class="text-danger text-small">
+                                               Please provide a valid first name 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control"
+                                            formControlName="firstName" 
+                                            placeholder="Nom" >
+                                    <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)" >
+                                        <div>
+                                            <span *ngIf="f.firstName.hasError('required')" class="text-danger text-small">
+                                               Please provide a valid first name 
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" 
+                                           formControlName="lastName" 
+                                           placeholder="Prénom">
+
+                                    <div *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
+                                        <span *ngIf="f.lastName.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <select class="nice-select w-100" 
+                                    formControlName="state"
+                                    name="selectedVille" 
+                                    (change)="OnChangeVille($event.target.value)">
+                                        <option *ngFor="let ville of data | keyvalue"
+                                                value="{{ ville.key }}">
+                                           {{ ville.key }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.state.invalid && (f.state.dirty || f.state.touched)" >
+                                        <span *ngIf="f.state.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <select class="nice-select w-100"
+                                            formControlName="deleg">
+                                        <option value="">Votre Délégation</option>
+                                        <option *ngFor="let deleg of selectedState"
+                                                value="{{ deleg }}">
+                                            {{ deleg }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.deleg.invalid && (f.deleg.dirty || f.deleg.touched)" >
+                                        <span *ngIf="f.deleg.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="tel" class="form-control" formControlName="tel" placeholder="Numéro de mobile">
+                                    <div *ngIf="f.tel.invalid && (f.tel.dirty || f.tel.touched)" >
+                                        <span *ngIf="f.tel.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="email" class="form-control" formControlName="email" placeholder="Votre email">
+                                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" >
+                                        <span *ngIf="f.email.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="password" class="form-control border" formControlName="password" placeholder="Mot de passe" >
+
+                                    <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" >
+                                        <span *ngIf="f.password.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                        
+                                        <span *ngIf="f.password.hasError('minlength')" class="text-danger text-small">
+                                           Number of characters 
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 text-right">
+                                    <a routerLink="/auth/signin" class="text-muted change-orange">
+                                        Vous avez déjà un compte?
+                                    </a>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <button type="submit" 
+                                            class="btn btn-warning w-100"
+                                            [disabled]="signupForm.invalid"
+                                            (click)="setRoleParticular()">
+                                        Envoyer
+                                    </button>
+                                </div>
+                            </div>    
+                        </form>
+                        <!-- form client -->
+                      </div>
+                      <div class="tab-pane fade" id="pro" role="tabpanel" aria-labelledby="pro-tab">
+                        <!-- form professionnel -->
+                        <form [formGroup]="signupForm" 
+                              (ngSubmit)="onSignUp()">
+
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input id="homme" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender" checked>
+                                        <label class="custom-control-label" for="homme"> Homme
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input id="femme" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+                                        <label class="custom-control-label" for="femme">Femme</label>
+                                    </div>
+                                    <div *ngIf="f.gender.invalid && (f.gender.dirty || f.gender.touched)" >
+                                        <div >
+                                            <span *ngIf="f.gender.hasError('required')" class="text-danger text-small">
+                                               Please provide a valid first name 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control"
+                                            formControlName="firstName" 
+                                            placeholder="Nom" >
+                                    <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)" >
+                                        <div>
+                                            <span *ngIf="f.firstName.hasError('required')" class="text-danger text-small">
+                                               Please provide a valid first name 
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" 
+                                           formControlName="lastName" 
+                                           placeholder="Prénom">
+
+                                    <div *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
+                                        <span *ngIf="f.lastName.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <select class="nice-select w-100"
+                                            formControlName="metier">
+                                        <option selected value="">Votre Métier</option>
+                                        <option *ngFor="let job of jobs.categories" 
+                                                value="{{ job.metier }}">
+                                            {{ job.metier }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.metier.invalid && (f.metier.dirty || f.metier.touched)" >
+                                        <span *ngIf="f.metier.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <select class="nice-select w-100" 
+                                    formControlName="state"
+                                    name="selectedVille" 
+                                    (change)="OnChangeVille($event.target.value)">
+                                        <option *ngFor="let ville of data | keyvalue"
+                                                value="{{ ville.key }}">
+                                           {{ ville.key }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.state.invalid && (f.state.dirty || f.state.touched)" >
+                                        <span *ngIf="f.state.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <select class="nice-select w-100"
+                                            formControlName="deleg">
+                                        <option value="">Votre Délégation</option>
+                                        <option *ngFor="let deleg of selectedState"
+                                                value="{{ deleg }}">
+                                            {{ deleg }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.deleg.invalid && (f.deleg.dirty || f.deleg.touched)" >
+                                        <span *ngIf="f.deleg.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="tel" class="form-control" formControlName="tel" placeholder="Numéro de mobile">
+                                    <div *ngIf="f.tel.invalid && (f.tel.dirty || f.tel.touched)" >
+                                        <span *ngIf="f.tel.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="email" class="form-control" formControlName="email" placeholder="Votre email">
+                                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" >
+                                        <span *ngIf="f.email.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="password" class="form-control border" formControlName="password" placeholder="Mot de passe" >
+
+                                    <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" >
+                                        <span *ngIf="f.password.hasError('required')" class="text-danger text-small">
+                                           Please provide a valid first name 
+                                        </span>
+                                        
+                                        <span *ngIf="f.password.hasError('minlength')" class="text-danger text-small">
+                                           Number of characters 
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 text-right">
+                                    <a routerLink="/auth/signin" class="text-muted change-orange">
+                                        Vous avez déjà un compte?
+                                    </a>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <button type="submit" 
+                                            class="btn btn-warning w-100"
+                                            [disabled]="signupForm.invalid"
+                                            (click)="setRolePro()">
+                                        Envoyer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- form professionnel -->   
+                      </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

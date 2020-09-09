@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let job of jobs.categories">
+        <a [routerLink]="['/trades', job.metier]" (click)="sendUri()">
+            {{ job.metier }}
+        </a>
+    </li>
+</ul>
